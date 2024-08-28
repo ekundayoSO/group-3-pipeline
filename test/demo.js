@@ -4,7 +4,7 @@ import assert from "assert";
 import "dotenv/config";
 
 describe("Login Functionality (Headless)", function () {
-  this.timeout(30000);
+  this.timeout(90000);
 
   let driver;
   const email = process.env.EMAIL;

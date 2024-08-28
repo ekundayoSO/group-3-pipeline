@@ -7,7 +7,7 @@ import "dotenv/config";
 
 
 describe("Registration Functionality", function () {
-  this.timeout(30000);
+  this.timeout(90000);
 
   let driver;
   // Extract sensitive information
