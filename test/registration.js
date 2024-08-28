@@ -1,5 +1,6 @@
 import assert from "assert";
 import { Builder, By, until } from "selenium-webdriver";
+import firefox from "selenium-webdriver/firefox.js";
 import generateRandomEmail from "./util/randomEmail.js";
 import "dotenv/config";
 
@@ -13,10 +14,18 @@ describe("Registration Functionality", function () {
   const password = process.env.REGISTRATION_PASSWORD;
 
   beforeEach(async () => {
-    driver = await new Builder()
+    // driver = await new Builder()
       // .usingServer("http://localhost:4444/wd/hub")
-      .forBrowser("firefox")
-      .build();
+     // .forBrowser("firefox")
+     // .build();
+     let options = new firefox.Options();
+     options.addArguments("headless");
+     options.addArguments("no-sandbox");
+     options.addArguments("disable-dev-shm-usage");
+     driver = new Builder()
+       .forBrowser("firefox")
+       .setFirefoxOptions(options)
+       .build();
     await driver.manage().window().maximize();
   });
 
