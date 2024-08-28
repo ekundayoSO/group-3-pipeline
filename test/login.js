@@ -17,9 +17,7 @@ describe("Login Functionality", function () {
       //.forBrowser("firefox")
       //.build();
       let options = new firefox.Options();
-      options.addArguments("headless");
-      options.addArguments("no-sandbox");
-      options.addArguments("disable-dev-shm-usage");
+      options.addArguments("--headless");
       driver = new Builder()
         .forBrowser("firefox")
         .setFirefoxOptions(options)

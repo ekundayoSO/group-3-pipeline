@@ -1,10 +1,7 @@
-
 import { Builder, By } from "selenium-webdriver";
 import firefox from "selenium-webdriver/firefox.js";
 import assert from "assert";
 import "dotenv/config";
-
-
 
 describe("Login Functionality (Headless)", function () {
   this.timeout(30000);
@@ -14,15 +11,13 @@ describe("Login Functionality (Headless)", function () {
   const password = process.env.PASSWORD;
 
   beforeEach(async () => {
-   let options = new firefox.Options();
-   options.addArguments("headless");
-   options.addArguments("no-sandbox");
-   options.addArguments("disable-dev-shm-usage");
-   driver = new Builder()
-     .forBrowser("firefox")
-     .setFirefoxOptions(options)
-     .build();
-     await driver.manage().window().maximize();
+    let options = new firefox.Options();
+    options.addArguments("--headless");
+    driver = new Builder()
+      .forBrowser("firefox")
+      .setFirefoxOptions(options)
+      .build();
+    await driver.manage().window().maximize();
   });
 
   afterEach(async () => {
@@ -32,7 +27,6 @@ describe("Login Functionality (Headless)", function () {
   });
 
   it("should login with valid credentials 1", async () => {
-   
     await driver.get("https://demowebshop.tricentis.com");
     await driver.findElement(By.className("ico-login")).click();
 
@@ -56,7 +50,6 @@ describe("Login Functionality (Headless)", function () {
   });
 
   it("should login with valid credentials 2", async () => {
-  
     await driver.get("https://demowebshop.tricentis.com");
     await driver.findElement(By.className("ico-login")).click();
 
